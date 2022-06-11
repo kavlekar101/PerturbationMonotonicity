@@ -1,4 +1,4 @@
-import xgboost
+import numpy
 import pandas as pd
 import scipy, importlib, pprint, matplotlib.pyplot as plt, warnings
 import glmnet_python
@@ -26,5 +26,11 @@ X_train = trainData.iloc[:,:-1]
 Y_train = trainData["criticalFound"]
 X_test = testData.iloc[:,:-1]
 Y_test = testData["criticalFound"]
-print(Y_train.shape)
-cvfit = cvglmnet(x = X_train.to_numpy(), y = Y_train.to_numpy(), family = 'binomial', ptype = 'class')
+
+penalty = numpy.concatenate((numpy.ones(6),numpy.zeros(10)))
+print(penalty)
+
+cvfit = cvglmnet(x = X_train.to_numpy().copy(), y = Y_train.to_numpy().copy(), family = 'binomial', alpha = 0, penalty_factor = penalty)
+coef = cvglmnetCoef(cvfit, s = 'lambda_min')
+print(cvfit["lambda_min"])
+print(coef)
