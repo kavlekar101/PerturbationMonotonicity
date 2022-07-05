@@ -1,3 +1,4 @@
+from sklearn import metrics
 import xgboost
 import pandas as pd
 from sklearn.datasets import load_digits
@@ -33,20 +34,23 @@ params = {
     "num_parallel_tree": 500,
 }
 
-num_round = 2  # the number of training iterations. It takes too much time on my m1 chip for 500 iters.
+# the number of training iterations. It takes too much time on my m1 chip for 500 iters.
+num_round = 2
 bstmodel = xgboost.train(params, dtrain, num_round)
 
 #Save as human readable model
-bstmodel.dump_model('dump.raw.txt')
+# bstmodel.dump_model('dump.raw.txt')
 preds = bstmodel.predict(dtest)
-print(preds)
+#print(preds)
 
-print(bstmodel.get_score(importance_type="gain"))
+import numpy as np
+print(np.average(preds, 0))
+
+# print(bstmodel.get_score(importance_type="gain"))
 
 # preds.shape
 # preds
 
-from sklearn import metrics
-mse = metrics.mean_squared_error(Y_test, preds[:,-1])
+mse = metrics.mean_squared_error(Y_test, preds[:, -1])
 
-print('mean square error: %f' % mse)
+#print('mean square error: %f' % mse)
