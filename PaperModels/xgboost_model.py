@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 
 import matplotlib.pyplot as plt
-foodData = pd.read_csv("../food_inspec_data.csv", index_col=0, dtype={"Inspector" : "category"})
+foodData = pd.read_csv("food_inspec_data.csv", index_col=0, dtype={"Inspector" : "category"})
 oneHotInspector = pd.get_dummies(foodData.Inspector, prefix="")
 foodData = foodData.drop(["Inspector", "Inspection_ID"], axis=1)
 foodData = pd.concat([oneHotInspector, foodData], axis=1)

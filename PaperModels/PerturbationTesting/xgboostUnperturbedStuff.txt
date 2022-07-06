@@ -1,6 +1,0 @@
-Blue Average: [0.50912154 0.4908785]
-Brown Average: [0.5181543 0.4818457]
-Green Average: [0.51578605 0.48421392]
-Orange Average: [0.5140274 0.4859726]
-Purple Average: [0.50452936 0.49547067]
-Yellow Average: [0.51703286 0.48296717]

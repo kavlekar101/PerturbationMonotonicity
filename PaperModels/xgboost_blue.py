@@ -6,8 +6,8 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 
 import matplotlib.pyplot as plt
-foodData = pd.read_csv("../food_inspec_data.csv", index_col=0, dtype={"Inspector" : "category"})
-foodData = foodData[foodData['Inspector'] == "orange"] # gets only the orange inspectors
+foodData = pd.read_csv("food_inspec_data.csv", index_col=0, dtype={"Inspector" : "category"})
+foodData = foodData[foodData['Inspector'] == "blue"] # gets only the blue inspectors
 oneHotInspector = pd.get_dummies(foodData.Inspector, prefix="")
 foodData = foodData.drop(["Inspector", "Inspection_ID"], axis=1)
 foodData = pd.concat([oneHotInspector, foodData], axis=1)
@@ -42,6 +42,9 @@ bstmodel = xgboost.train(params, dtrain, num_round)
 # bstmodel.dump_model('dump.raw.txt')
 preds = bstmodel.predict(dtest)
 #print(preds)
+
+import numpy as np
+print(np.average(preds, 0))
 
 # print(bstmodel.get_score(importance_type="gain"))
 

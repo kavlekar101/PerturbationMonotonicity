@@ -26,7 +26,7 @@ auc6 = metrics.auc(fpr6, tpr6)
 fpr7, tpr7, threshold7 = metrics.roc_curve(xgboost_model.yellowTest, xgboost_model.yellowPreds[:,1])
 auc7 = metrics.auc(fpr7, tpr7)
 
-# check the slices in the comprehensive model versus the model 
+# These are the slices of the model
 
 
 plt.figure()
