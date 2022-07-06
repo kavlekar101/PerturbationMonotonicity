@@ -4,6 +4,7 @@ import xgboost_model
 from sklearn import metrics
 import numpy
 
+# compares the slice models to the xgboost model
 
 '''fpr1, tpr1, threshold1 = metrics.roc_curve(xgboost_model.Y_test, xgboost_model.preds[:,1])
 auc1 = metrics.auc(fpr1, tpr1)

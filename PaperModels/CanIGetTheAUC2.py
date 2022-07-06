@@ -4,6 +4,7 @@ import xgboost_model
 from sklearn import metrics
 import numpy
 
+#slices within the cumulative model just split up
 
 fpr1, tpr1, threshold1 = metrics.roc_curve(xgboost_model.Y_test, xgboost_model.preds[:,1])
 auc1 = metrics.auc(fpr1, tpr1)
@@ -25,8 +26,6 @@ auc6 = metrics.auc(fpr6, tpr6)
 
 fpr7, tpr7, threshold7 = metrics.roc_curve(xgboost_model.yellowTest, xgboost_model.yellowPreds[:,1])
 auc7 = metrics.auc(fpr7, tpr7)
-
-# These are the slices of the model
 
 
 plt.figure()
